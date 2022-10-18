@@ -7,7 +7,7 @@ namespace ArdalisRating.Utils
     {
         public static TResponse Deserialize<TResponse>(string json) where TResponse : class
         {
-            return JsonConvert.DeserializeObject<TResponse>(json, converters: new StringEnumConverter());
+            return JsonConvert.DeserializeObject<TResponse>(json);
         }
 
         public static string Serialize<TObject>(TObject @object) where TObject : class
