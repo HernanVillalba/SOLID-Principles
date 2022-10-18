@@ -12,6 +12,7 @@ namespace ArdalisRating
     /// </summary>
     public class RatingEngine
     {
+        public const string policyPath = "policy.json";
         public decimal Rating { get; set; }
 
         public void Rate()
@@ -20,11 +21,9 @@ namespace ArdalisRating
 
             Logger.Log<RatingEngine>("Loading policy.");
 
-            // load policy - open file policy.json
-            string policyJson = File.ReadAllText("policy.json");
+            string policyJson = FilePolicySource.GetPolicyFromsource(path: policyPath);
 
-            Policy policy = JsonConvert.DeserializeObject<Policy>(policyJson,
-                new StringEnumConverter());
+            Policy policy = Serializer.Deserialize<Policy>(json: policyJson);
 
             switch (policy.Type)
             {
