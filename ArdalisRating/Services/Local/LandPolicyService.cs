@@ -3,12 +3,9 @@ using ArdalisRating.Utils;
 
 namespace ArdalisRating.Services.Local
 {
-    public class LandPolicyService
+    public class LandPolicyService : Rater
     {
-        public LandPolicyService()
-        { }
-
-        public decimal Rate(Policy policy)
+        public override decimal Rate(Policy policy)
         {
             Logger.Log<RatingEngine>("Rating LAND policy...");
             Logger.Log<RatingEngine>("Validating policy.");

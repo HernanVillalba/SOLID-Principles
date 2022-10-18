@@ -11,16 +11,10 @@ namespace ArdalisRating.Services.Handlers
     public class RatingEngine
     {
         private const string policyPath = "policy.json";
-        private readonly AutoPolicyRater autoPolicyRater;
-        private readonly LandPolicyService landPolicyService;
-        private readonly LifePolicyRater lifePolicyRater;
-        private decimal rating;
+        public decimal Rating;
 
         public RatingEngine()
         {
-            autoPolicyRater = new();
-            landPolicyService = new();
-            lifePolicyRater = new();
         }
 
         public void Rate()
@@ -33,23 +27,13 @@ namespace ArdalisRating.Services.Handlers
 
             Policy policy = Serializer.Deserialize<Policy>(json: policyJson);
 
-            rating = policy.Type switch
-            {
-                PolicyType.Auto => autoPolicyRater.Rate(policy),
-                PolicyType.Land => landPolicyService.Rate(policy),
-                PolicyType.Life => lifePolicyRater.Rate(policy),
+            RateFactory factory = new();
 
-                _ => Default()
-            };
+            Rater rater = factory.Create(policyType: policy.Type);
+
+            Rating = rater.Rate(policy);
 
             Logger.Log<RatingEngine>("Rating completed.");
-        }
-
-        private decimal Default()
-        {
-            Logger.Log<RatingEngine>("Unknown policy type");
-
-            return default;
         }
     }
 }
