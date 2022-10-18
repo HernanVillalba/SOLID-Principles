@@ -1,48 +1,51 @@
+using ArdalisRating.Utils;
 using Newtonsoft.Json;
-using System;
 using System.IO;
 using Xunit;
 
-namespace ArdalisRating.Tests
+namespace ArdalisRating.Tests;
+
+public class RatingEngineRate
 {
-    public class RatingEngineRate
+    [Theory]
+    [InlineData("policy.json")]
+    public void ReturnsRatingOf10000For200000LandPolicy(string policyPath)
     {
-        [Fact]
-        public void ReturnsRatingOf10000For200000LandPolicy()
+        Policy policy = new()
         {
-            var policy = new Policy
-            {
-                Type = PolicyType.Land,
-                BondAmount = 200000,
-                Valuation = 200000
-            };
-            string json = JsonConvert.SerializeObject(policy);
-            File.WriteAllText("policy.json", json);
+            Type = PolicyType.Land,
+            BondAmount = 200000,
+            Valuation = 200000
+        };
 
-            var engine = new RatingEngine();
-            engine.Rate();
-            var result = engine.Rating;
+        string json = Serializer.Serialize(policy);
 
-            Assert.Equal(10000, result);
-        }
+        FilePolicySource.WriteInfile(path: policyPath, text: json);
 
-        [Fact]
-        public void ReturnsRatingOf0For200000BondOn260000LandPolicy()
+        RatingEngine engine = new();
+        engine.Rate();
+        decimal result = engine.Rating;
+
+        Assert.Equal(10000, result);
+    }
+
+    [Theory]
+    [InlineData("policy.json")]
+    public void ReturnsRatingOf0For200000BondOn260000LandPolicy(string policyPath)
+    {
+        Policy policy = new()
         {
-            var policy = new Policy
-            {
-                Type = PolicyType.Land,
-                BondAmount = 200000,
-                Valuation = 260000
-            };
-            string json = JsonConvert.SerializeObject(policy);
-            File.WriteAllText("policy.json", json);
+            Type = PolicyType.Land,
+            BondAmount = 200000,
+            Valuation = 260000
+        };
+        string json = JsonConvert.SerializeObject(policy);
+        FilePolicySource.WriteInfile(path: policyPath, text: json);
 
-            var engine = new RatingEngine();
-            engine.Rate();
-            var result = engine.Rating;
+        RatingEngine engine = new();
+        engine.Rate();
+        decimal result = engine.Rating;
 
-            Assert.Equal(0, result);
-        }
+        Assert.Equal(0, result);
     }
 }
