@@ -30,7 +30,7 @@ public class AutoPolicyRater : Rater
         {
             if (policy.Deductible < 500)
             {
-                rating = 1000m;
+                return 1000m;
             }
 
             rating = 900m;
