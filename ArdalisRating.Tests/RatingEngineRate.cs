@@ -24,9 +24,9 @@ public class RatingEngineRate
 
         FilePolicySource.WriteInfile(path: policyPath, text: json);
 
-        RatingEngine engine = new();
+        RatingEngine engine = new(new Logger());
         engine.Rate();
-        decimal result = engine.Rating;
+        decimal? result = engine.Rating;
 
         Assert.Equal(10000, result);
     }
@@ -44,9 +44,9 @@ public class RatingEngineRate
         string json = JsonConvert.SerializeObject(policy);
         FilePolicySource.WriteInfile(path: policyPath, text: json);
 
-        RatingEngine engine = new();
+        RatingEngine engine = new(new Logger());
         engine.Rate();
-        decimal result = engine.Rating;
+        decimal? result = engine.Rating;
 
         Assert.Equal(0, result);
     }

@@ -10,24 +10,30 @@ namespace ArdalisRating.Services.Handlers
     /// </summary>
     public class RatingEngine
     {
+        private readonly ILogger logger;
         private const string policyPath = "policy.json";
         public decimal? Rating;
 
+        public RatingEngine(ILogger logger)
+        {
+            this.logger = logger;
+        }
+
         public void Rate()
         {
-            Logger.Log<RatingEngine>("Starting rate");
+            logger.Log<RatingEngine>("Starting rate");
 
-            Logger.Log<RatingEngine>("Loading policy.");
+            logger.Log<RatingEngine>("Loading policy.");
 
             string policyJson = FilePolicySource.GetPolicyFromsource(path: policyPath);
 
             Policy policy = Serializer.Deserialize<Policy>(json: policyJson);
 
-            Rater rater = RateFactory.Create(policy.Type);
+            Rater rater = new RateFactory(logger).Create(policy.Type);
 
             Rating = rater.Rate(policy);
 
-            Logger.Log<RatingEngine>("Rating completed.");
+            logger.Log<RatingEngine>("Rating completed.");
         }
     }
 }

@@ -5,19 +5,26 @@ namespace ArdalisRating.Services.Local
 {
     public class LandPolicyService : Rater
     {
+        private readonly ILogger logger;
+
+        public LandPolicyService(ILogger logger)
+        {
+            this.logger = logger;
+        }
+
         public override decimal Rate(Policy policy)
         {
-            Logger.Log<RatingEngine>("Rating LAND policy...");
-            Logger.Log<RatingEngine>("Validating policy.");
+            logger.Log<RatingEngine>("Rating LAND policy...");
+            logger.Log<RatingEngine>("Validating policy.");
 
             if (policy.BondAmount == 0 || policy.Valuation == 0)
             {
-                Logger.Log<RatingEngine>("Land policy must specify Bond Amount and Valuation.");
+                logger.Log<RatingEngine>("Land policy must specify Bond Amount and Valuation.");
                 return default;
             }
             if (policy.BondAmount < 0.8m * policy.Valuation)
             {
-                Logger.Log<RatingEngine>("Insufficient bond amount.");
+                logger.Log<RatingEngine>("Insufficient bond amount.");
                 return default;
             }
 

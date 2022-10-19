@@ -4,14 +4,16 @@ using System;
 
 Console.WriteLine("Ardalis Insurance Rating System Starting...");
 
-RatingEngine engine = new();
+ILogger logger = new Logger();
+RatingEngine engine = new(logger);
+
 engine.Rate();
 
 if (engine?.Rating > 0)
 {
-    Logger.Log<Program>($"Rating: {engine.Rating}");
+    logger.Log<Program>($"Rating: {engine.Rating}");
 }
 else
 {
-    Logger.Log<Program>("No rating produced.");
+    logger.Log<Program>("No rating produced.");
 }

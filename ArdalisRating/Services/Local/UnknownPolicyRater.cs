@@ -5,9 +5,16 @@ namespace ArdalisRating.Services.Local
 {
     public class UnknownPolicyRater : Rater
     {
+        private readonly ILogger logger;
+
+        public UnknownPolicyRater(ILogger logger)
+        {
+            this.logger = logger;
+        }
+
         public override decimal Rate(Policy policy)
         {
-            Logger.Log<RatingEngine>("Unknown policy type");
+            logger.Log<RatingEngine>("Unknown policy type");
 
             return default;
         }

@@ -3,9 +3,14 @@ using System.Runtime.CompilerServices;
 
 namespace ArdalisRating.Utils
 {
-    public static class Logger
+    public interface ILogger
     {
-        public static void Log<ClassType>(string message, [CallerMemberName] string memberName = null) where ClassType : class
+        void Log<ClassType>(string message, [CallerMemberName] string memberName = null) where ClassType : class;
+    }
+
+    public class Logger : ILogger
+    {
+        public void Log<ClassType>(string message, [CallerMemberName] string memberName = null) where ClassType : class
         {
             Console.WriteLine(value: $"{typeof(ClassType).Name}.{memberName}() - Message: {message}");
         }
