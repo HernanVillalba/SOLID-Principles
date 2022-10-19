@@ -10,7 +10,7 @@ namespace ArdalisRating.Utils
         {
             var settings = new JsonSerializerSettings
             {
-                Error = (object sender, ErrorEventArgs errorArgs) => errorArgs.ErrorContext.Handled = true
+                Error = Error
             };
 
             return JsonConvert.DeserializeObject<TResponse>(json, settings);
@@ -20,5 +20,8 @@ namespace ArdalisRating.Utils
         {
             return JsonConvert.SerializeObject(@object);
         }
+
+        private static void Error(object sender, ErrorEventArgs errorArgs) =>
+            errorArgs.ErrorContext.Handled = true;
     }
 }

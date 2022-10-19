@@ -3,9 +3,9 @@ using ArdalisRating.Services.Local;
 
 namespace ArdalisRating.Services.Handlers;
 
-public class RateFactory
+public static class RateFactory
 {
-    public Rater Create(PolicyType? policyType)
+    public static Rater Create(PolicyType? policyType)
     {
         return policyType switch
         {
@@ -13,7 +13,7 @@ public class RateFactory
             PolicyType.Land => new LandPolicyService(),
             PolicyType.Life => new LifePolicyRater(),
 
-            _ => default
+            _ => new UnknownPolicyRater()
         };
     }
 }
