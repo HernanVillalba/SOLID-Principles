@@ -1,6 +1,6 @@
-﻿using ArdalisRating.Appplication.Services.Handlers;
-using ArdalisRating.Appplication.Services.Local;
-using ArdalisRating.Appplication.Utils;
+﻿using ArdalisRating.Application.Handlers;
+using ArdalisRating.Application.Utils;
+using ArdalisRating.Infrastructure.Services;
 using System;
 
 Console.WriteLine("Ardalis Insurance Rating System Starting...");

@@ -1,8 +1,10 @@
-﻿using ArdalisRating.Appplication.Services.Local;
-using ArdalisRating.Appplication.Utils;
+﻿using ArdalisRating.Application.Services.Local;
+using ArdalisRating.Application.Utils;
 using ArdalisRating.Domain.Models;
+using ArdalisRating.Infrastructure.Services;
+using ArdalisRating.Infrastructure.Utils;
 
-namespace ArdalisRating.Appplication.Services.Handlers
+namespace ArdalisRating.Application.Handlers
 {
     /// <summary>
     /// The RatingEngine reads the policy application details from a file and produces a numeric

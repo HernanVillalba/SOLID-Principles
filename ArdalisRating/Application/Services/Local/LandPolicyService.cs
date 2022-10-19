@@ -1,7 +1,7 @@
-﻿using ArdalisRating.Appplication.Services.Handlers;
-using ArdalisRating.Domain.Models;
+﻿using ArdalisRating.Domain.Models;
+using ArdalisRating.Infrastructure.Services;
 
-namespace ArdalisRating.Appplication.Services.Local
+namespace ArdalisRating.Application.Services.Local
 {
     public class LandPolicyService : Rater
     {
@@ -14,17 +14,17 @@ namespace ArdalisRating.Appplication.Services.Local
 
         public override decimal Rate(Policy policy)
         {
-            logger.Log<RatingEngine>("Rating LAND policy...");
-            logger.Log<RatingEngine>("Validating policy.");
+            logger.Log<LandPolicyService>("Rating LAND policy...");
+            logger.Log<LandPolicyService>("Validating policy.");
 
             if (policy.BondAmount == 0 || policy.Valuation == 0)
             {
-                logger.Log<RatingEngine>("Land policy must specify Bond Amount and Valuation.");
+                logger.Log<LandPolicyService>("Land policy must specify Bond Amount and Valuation.");
                 return default;
             }
             if (policy.BondAmount < 0.8m * policy.Valuation)
             {
-                logger.Log<RatingEngine>("Insufficient bond amount.");
+                logger.Log<LandPolicyService>("Insufficient bond amount.");
                 return default;
             }
 

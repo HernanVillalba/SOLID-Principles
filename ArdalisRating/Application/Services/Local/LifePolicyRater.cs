@@ -1,8 +1,8 @@
-﻿using ArdalisRating.Appplication.Services.Handlers;
-using ArdalisRating.Domain.Models;
+﻿using ArdalisRating.Domain.Models;
+using ArdalisRating.Infrastructure.Services;
 using System;
 
-namespace ArdalisRating.Appplication.Services.Local;
+namespace ArdalisRating.Application.Services.Local;
 
 public class LifePolicyRater : Rater
 {
@@ -15,22 +15,22 @@ public class LifePolicyRater : Rater
 
     public override decimal Rate(Policy policy)
     {
-        logger.Log<RatingEngine>("Rating LIFE policy...");
-        logger.Log<RatingEngine>("Validating policy.");
+        logger.Log<LifePolicyRater>("Rating LIFE policy...");
+        logger.Log<LifePolicyRater>("Validating policy.");
 
         if (policy.DateOfBirth == DateTime.MinValue)
         {
-            logger.Log<RatingEngine>("Life policy must include Date of Birth.");
+            logger.Log<LifePolicyRater>("Life policy must include Date of Birth.");
             return default;
         }
         if (policy.DateOfBirth < DateTime.Today.AddYears(-100))
         {
-            logger.Log<RatingEngine>("Centenarians are not eligible for coverage.");
+            logger.Log<LifePolicyRater>("Centenarians are not eligible for coverage.");
             return default;
         }
         if (policy.Amount == 0)
         {
-            logger.Log<RatingEngine>("Life policy must include an Amount.");
+            logger.Log<LifePolicyRater>("Life policy must include an Amount.");
             return default;
         }
 

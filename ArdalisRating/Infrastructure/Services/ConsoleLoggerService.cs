@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace ArdalisRating.Appplication.Services.Local
+namespace ArdalisRating.Infrastructure.Services
 {
     public interface ILoggerService
     {

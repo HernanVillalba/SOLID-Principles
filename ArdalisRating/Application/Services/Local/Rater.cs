@@ -1,6 +1,6 @@
 ﻿using ArdalisRating.Domain.Models;
 
-namespace ArdalisRating.Appplication.Services.Local
+namespace ArdalisRating.Application.Services.Local
 {
     public abstract class Rater
     {

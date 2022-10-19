@@ -1,7 +1,7 @@
-﻿using ArdalisRating.Appplication.Services.Handlers;
-using ArdalisRating.Domain.Models;
+﻿using ArdalisRating.Domain.Models;
+using ArdalisRating.Infrastructure.Services;
 
-namespace ArdalisRating.Appplication.Services.Local
+namespace ArdalisRating.Application.Services.Local
 {
     public class UnknownPolicyRater : Rater
     {
@@ -14,7 +14,7 @@ namespace ArdalisRating.Appplication.Services.Local
 
         public override decimal Rate(Policy policy)
         {
-            logger.Log<RatingEngine>("Unknown policy type");
+            logger.Log<UnknownPolicyRater>("Unknown policy type");
 
             return default;
         }

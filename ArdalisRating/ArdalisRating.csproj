@@ -18,4 +18,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Appplication\Handlers\" />
+    <Folder Include="Appplication\Services\Local\" />
+    <Folder Include="Appplication\Utils\" />
+  </ItemGroup>
+
 </Project>

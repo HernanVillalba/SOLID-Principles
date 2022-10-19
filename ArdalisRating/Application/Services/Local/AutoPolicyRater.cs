@@ -1,7 +1,7 @@
-﻿using ArdalisRating.Appplication.Services.Handlers;
-using ArdalisRating.Domain.Models;
+﻿using ArdalisRating.Domain.Models;
+using ArdalisRating.Infrastructure.Services;
 
-namespace ArdalisRating.Appplication.Services.Local;
+namespace ArdalisRating.Application.Services.Local;
 
 public class AutoPolicyRater : Rater
 {
@@ -14,12 +14,12 @@ public class AutoPolicyRater : Rater
 
     public override decimal Rate(Policy policy)
     {
-        logger.Log<RatingEngine>("Rating AUTO policy...");
-        logger.Log<RatingEngine>("Validating policy.");
+        logger.Log<AutoPolicyRater>("Rating AUTO policy...");
+        logger.Log<AutoPolicyRater>("Validating policy.");
 
         if (string.IsNullOrEmpty(policy.Make))
         {
-            logger.Log<RatingEngine>("Auto policy must specify Make");
+            logger.Log<AutoPolicyRater>("Auto policy must specify Make");
 
             return default;
         }

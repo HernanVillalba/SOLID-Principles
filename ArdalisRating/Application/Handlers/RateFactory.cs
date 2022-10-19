@@ -1,7 +1,8 @@
-﻿using ArdalisRating.Appplication.Services.Local;
+﻿using ArdalisRating.Application.Services.Local;
 using ArdalisRating.Domain.Enums;
+using ArdalisRating.Infrastructure.Services;
 
-namespace ArdalisRating.Appplication.Services.Handlers;
+namespace ArdalisRating.Application.Handlers;
 
 public class RateFactory
 {
