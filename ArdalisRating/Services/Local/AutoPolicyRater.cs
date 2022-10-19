@@ -5,17 +5,21 @@ namespace ArdalisRating.Services.Local;
 
 public class AutoPolicyRater : Rater
 {
-    public AutoPolicyRater()
-    { }
+    private readonly ILogger logger;
+
+    public AutoPolicyRater(ILogger logger)
+    {
+        this.logger = logger;
+    }
 
     public override decimal Rate(Policy policy)
     {
-        Logger.Log<RatingEngine>("Rating AUTO policy...");
-        Logger.Log<RatingEngine>("Validating policy.");
+        logger.Log<RatingEngine>("Rating AUTO policy...");
+        logger.Log<RatingEngine>("Validating policy.");
 
         if (string.IsNullOrEmpty(policy.Make))
         {
-            Logger.Log<RatingEngine>("Auto policy must specify Make");
+            logger.Log<RatingEngine>("Auto policy must specify Make");
 
             return default;
         }

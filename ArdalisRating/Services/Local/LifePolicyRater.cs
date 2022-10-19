@@ -6,27 +6,31 @@ namespace ArdalisRating.Services.Local;
 
 public class LifePolicyRater : Rater
 {
-    public LifePolicyRater()
-    { }
+    private readonly ILogger logger;
+
+    public LifePolicyRater(ILogger logger)
+    {
+        this.logger = logger;
+    }
 
     public override decimal Rate(Policy policy)
     {
-        Logger.Log<RatingEngine>("Rating LIFE policy...");
-        Logger.Log<RatingEngine>("Validating policy.");
+        logger.Log<RatingEngine>("Rating LIFE policy...");
+        logger.Log<RatingEngine>("Validating policy.");
 
         if (policy.DateOfBirth == DateTime.MinValue)
         {
-            Logger.Log<RatingEngine>("Life policy must include Date of Birth.");
+            logger.Log<RatingEngine>("Life policy must include Date of Birth.");
             return default;
         }
         if (policy.DateOfBirth < DateTime.Today.AddYears(-100))
         {
-            Logger.Log<RatingEngine>("Centenarians are not eligible for coverage.");
+            logger.Log<RatingEngine>("Centenarians are not eligible for coverage.");
             return default;
         }
         if (policy.Amount == 0)
         {
-            Logger.Log<RatingEngine>("Life policy must include an Amount.");
+            logger.Log<RatingEngine>("Life policy must include an Amount.");
             return default;
         }
 
