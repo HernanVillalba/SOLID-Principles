@@ -1,11 +1,19 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace ArdalisRating.Utils
 {
-    public static class FilePolicySource
+    public interface IFilePolicySource
     {
-        public static string GetPolicyFromsource(string path) => File.ReadAllText(path);
+        string GetPolicyFromsource(string path);
 
-        public static void WriteInfile(string path, string text) => File.WriteAllText(path, text);
+        void WriteInfile(string path, string text);
+    }
+
+    public class FilePolicySource : IFilePolicySource
+    {
+        public string GetPolicyFromsource(string path) => File.ReadAllText(path);
+
+        public void WriteInfile(string path, string text) => File.WriteAllText(path, text);
     }
 }

@@ -11,12 +11,14 @@ namespace ArdalisRating.Services.Handlers
     public class RatingEngine
     {
         private readonly ILogger logger;
+        private readonly IFilePolicySource filePolicySource;
         private const string policyPath = "policy.json";
         public decimal? Rating;
 
-        public RatingEngine(ILogger logger)
+        public RatingEngine(ILogger logger, IFilePolicySource filePolicySource)
         {
             this.logger = logger;
+            this.filePolicySource = filePolicySource;
         }
 
         public void Rate()
@@ -25,7 +27,7 @@ namespace ArdalisRating.Services.Handlers
 
             logger.Log<RatingEngine>("Loading policy.");
 
-            string policyJson = FilePolicySource.GetPolicyFromsource(path: policyPath);
+            string policyJson = filePolicySource.GetPolicyFromsource(path: policyPath);
 
             Policy policy = Serializer.Deserialize<Policy>(json: policyJson);
 

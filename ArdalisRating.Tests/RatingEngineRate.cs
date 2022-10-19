@@ -13,6 +13,8 @@ public class RatingEngineRate
     [InlineData("policy.json")]
     public void ReturnsRatingOf10000For200000LandPolicy(string policyPath)
     {
+        FilePolicySource filePolicySource = new();
+
         Policy policy = new()
         {
             Type = PolicyType.Land,
@@ -22,9 +24,9 @@ public class RatingEngineRate
 
         string json = Serializer.Serialize(policy);
 
-        FilePolicySource.WriteInfile(path: policyPath, text: json);
+        filePolicySource.WriteInfile(path: policyPath, text: json);
 
-        RatingEngine engine = new(new Logger());
+        RatingEngine engine = new(new Logger(), new FilePolicySource());
         engine.Rate();
         decimal? result = engine.Rating;
 
@@ -35,16 +37,20 @@ public class RatingEngineRate
     [InlineData("policy.json")]
     public void ReturnsRatingOf0For200000BondOn260000LandPolicy(string policyPath)
     {
+        FilePolicySource filePolicySource = new();
+
         Policy policy = new()
         {
             Type = PolicyType.Land,
             BondAmount = 200000,
             Valuation = 260000
         };
-        string json = JsonConvert.SerializeObject(policy);
-        FilePolicySource.WriteInfile(path: policyPath, text: json);
 
-        RatingEngine engine = new(new Logger());
+        string json = Serializer.Serialize(policy);
+
+        filePolicySource.WriteInfile(path: policyPath, text: json);
+
+        RatingEngine engine = new(new Logger(), filePolicySource);
         engine.Rate();
         decimal? result = engine.Rating;
 
