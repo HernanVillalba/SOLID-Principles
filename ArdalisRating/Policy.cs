@@ -1,4 +1,5 @@
 ﻿using System;
+using ArdalisRating.Domain.Enums;
 
 namespace ArdalisRating
 {

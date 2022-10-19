@@ -1,4 +1,5 @@
-﻿using ArdalisRating.Utils;
+﻿using ArdalisRating.Domain.Enums;
+using ArdalisRating.Utils;
 using System;
 using Xunit;
 
