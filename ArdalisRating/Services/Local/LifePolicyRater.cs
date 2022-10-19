@@ -6,9 +6,9 @@ namespace ArdalisRating.Services.Local;
 
 public class LifePolicyRater : Rater
 {
-    private readonly ILogger logger;
+    private readonly ILoggerService logger;
 
-    public LifePolicyRater(ILogger logger)
+    public LifePolicyRater(ILoggerService logger)
     {
         this.logger = logger;
     }

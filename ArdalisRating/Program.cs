@@ -4,7 +4,7 @@ using System;
 
 Console.WriteLine("Ardalis Insurance Rating System Starting...");
 
-ILogger logger = new Logger();
+ILoggerService logger = new LoggerService();
 RatingEngine engine = new(logger, new FilePolicySource());
 
 engine.Rate();

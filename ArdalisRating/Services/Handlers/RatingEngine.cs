@@ -10,12 +10,12 @@ namespace ArdalisRating.Services.Handlers
     /// </summary>
     public class RatingEngine
     {
-        private readonly ILogger logger;
+        private readonly ILoggerService logger;
         private readonly IFilePolicySource filePolicySource;
         private const string policyPath = "policy.json";
         public decimal? Rating;
 
-        public RatingEngine(ILogger logger, IFilePolicySource filePolicySource)
+        public RatingEngine(ILoggerService logger, IFilePolicySource filePolicySource)
         {
             this.logger = logger;
             this.filePolicySource = filePolicySource;

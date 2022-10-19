@@ -26,7 +26,7 @@ public class RatingEngineRate
 
         filePolicySource.WriteInfile(path: policyPath, text: json);
 
-        RatingEngine engine = new(new Logger(), new FilePolicySource());
+        RatingEngine engine = new(new LoggerService(), new FilePolicySource());
         engine.Rate();
         decimal? result = engine.Rating;
 
@@ -50,7 +50,7 @@ public class RatingEngineRate
 
         filePolicySource.WriteInfile(path: policyPath, text: json);
 
-        RatingEngine engine = new(new Logger(), filePolicySource);
+        RatingEngine engine = new(new LoggerService(), filePolicySource);
         engine.Rate();
         decimal? result = engine.Rating;
 

@@ -5,9 +5,9 @@ namespace ArdalisRating.Services.Local
 {
     public class LandPolicyService : Rater
     {
-        private readonly ILogger logger;
+        private readonly ILoggerService logger;
 
-        public LandPolicyService(ILogger logger)
+        public LandPolicyService(ILoggerService logger)
         {
             this.logger = logger;
         }

@@ -5,9 +5,9 @@ namespace ArdalisRating.Services.Local
 {
     public class UnknownPolicyRater : Rater
     {
-        private readonly ILogger logger;
+        private readonly ILoggerService logger;
 
-        public UnknownPolicyRater(ILogger logger)
+        public UnknownPolicyRater(ILoggerService logger)
         {
             this.logger = logger;
         }

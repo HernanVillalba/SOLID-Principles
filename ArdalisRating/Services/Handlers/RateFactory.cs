@@ -6,9 +6,9 @@ namespace ArdalisRating.Services.Handlers;
 
 public class RateFactory
 {
-    private readonly ILogger logger;
+    private readonly ILoggerService logger;
 
-    public RateFactory(ILogger logger)
+    public RateFactory(ILoggerService logger)
     {
         this.logger = logger;
     }

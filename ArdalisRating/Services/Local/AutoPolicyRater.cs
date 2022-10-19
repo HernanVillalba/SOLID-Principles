@@ -5,9 +5,9 @@ namespace ArdalisRating.Services.Local;
 
 public class AutoPolicyRater : Rater
 {
-    private readonly ILogger logger;
+    private readonly ILoggerService logger;
 
-    public AutoPolicyRater(ILogger logger)
+    public AutoPolicyRater(ILoggerService logger)
     {
         this.logger = logger;
     }
