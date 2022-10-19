@@ -1,0 +1,7 @@
+RatingEngine.Rate() - Message: Starting rate
+RatingEngine.Rate() - Message: Loading policy.
+RatingEngine.Rate() - Message: Starting rate
+RatingEngine.Rate() - Message: Loading policy.
+AutoPolicyRater.Rate() - Message: Rating AUTO policy...
+AutoPolicyRater.Rate() - Message: Validating policy.
+RatingEngine.Rate() - Message: Rating completed.
