@@ -11,11 +11,7 @@ namespace ArdalisRating.Services.Handlers
     public class RatingEngine
     {
         private const string policyPath = "policy.json";
-        public decimal Rating;
-
-        public RatingEngine()
-        {
-        }
+        public decimal? Rating;
 
         public void Rate()
         {
@@ -31,7 +27,7 @@ namespace ArdalisRating.Services.Handlers
 
             Rater rater = factory.Create(policyType: policy.Type);
 
-            Rating = rater.Rate(policy);
+            Rating = rater?.Rate(policy);
 
             Logger.Log<RatingEngine>("Rating completed.");
         }

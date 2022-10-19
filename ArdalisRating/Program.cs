@@ -1,25 +1,17 @@
-﻿using System;
+﻿using ArdalisRating.Services.Handlers;
+using ArdalisRating.Utils;
+using System;
 
-namespace ArdalisRating
+Console.WriteLine("Ardalis Insurance Rating System Starting...");
+
+RatingEngine engine = new();
+engine.Rate();
+
+if (engine?.Rating > 0)
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Ardalis Insurance Rating System Starting...");
-
-            var engine = new RatingEngine();
-            engine.Rate();
-
-            if (engine.Rating > 0)
-            {
-                Console.WriteLine($"Rating: {engine.Rating}");
-            }
-            else
-            {
-                Console.WriteLine("No rating produced.");
-            }
-
-        }
-    }
+    Logger.Log<Program>($"Rating: {engine.Rating}");
+}
+else
+{
+    Logger.Log<Program>("No rating produced.");
 }

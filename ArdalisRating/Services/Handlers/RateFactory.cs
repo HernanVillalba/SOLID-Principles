@@ -5,7 +5,7 @@ namespace ArdalisRating.Services.Handlers;
 
 public class RateFactory
 {
-    public Rater Create(PolicyType policyType)
+    public Rater Create(PolicyType? policyType)
     {
         return policyType switch
         {
