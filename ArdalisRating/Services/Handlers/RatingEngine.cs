@@ -23,11 +23,9 @@ namespace ArdalisRating.Services.Handlers
 
             Policy policy = Serializer.Deserialize<Policy>(json: policyJson);
 
-            RateFactory factory = new();
+            Rater rater = RateFactory.Create(policy.Type);
 
-            Rater rater = factory.Create(policyType: policy.Type);
-
-            Rating = rater?.Rate(policy);
+            Rating = rater.Rate(policy);
 
             Logger.Log<RatingEngine>("Rating completed.");
         }
