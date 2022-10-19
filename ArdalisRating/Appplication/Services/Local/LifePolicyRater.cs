@@ -1,8 +1,8 @@
-﻿using ArdalisRating.Services.Handlers;
-using ArdalisRating.Utils;
+﻿using ArdalisRating.Appplication.Services.Handlers;
+using ArdalisRating.Domain.Models;
 using System;
 
-namespace ArdalisRating.Services.Local;
+namespace ArdalisRating.Appplication.Services.Local;
 
 public class LifePolicyRater : Rater
 {

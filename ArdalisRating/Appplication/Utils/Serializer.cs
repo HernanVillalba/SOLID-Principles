@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace ArdalisRating.Utils
+namespace ArdalisRating.Appplication.Utils
 {
     public static class Serializer
     {

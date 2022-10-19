@@ -1,6 +1,8 @@
+using ArdalisRating.Appplication.Services.Handlers;
+using ArdalisRating.Appplication.Services.Local;
+using ArdalisRating.Appplication.Utils;
 using ArdalisRating.Domain.Enums;
-using ArdalisRating.Services.Handlers;
-using ArdalisRating.Utils;
+using ArdalisRating.Domain.Models;
 using Newtonsoft.Json;
 using System.IO;
 using Xunit;
@@ -26,7 +28,7 @@ public class RatingEngineRate
 
         filePolicySource.WriteInfile(path: policyPath, text: json);
 
-        RatingEngine engine = new(new LoggerService(), new FilePolicySource());
+        RatingEngine engine = new(new ConsoleLoggerService(), new FilePolicySource());
         engine.Rate();
         decimal? result = engine.Rating;
 
@@ -50,7 +52,7 @@ public class RatingEngineRate
 
         filePolicySource.WriteInfile(path: policyPath, text: json);
 
-        RatingEngine engine = new(new LoggerService(), filePolicySource);
+        RatingEngine engine = new(new ConsoleLoggerService(), filePolicySource);
         engine.Rate();
         decimal? result = engine.Rating;
 

@@ -1,5 +1,6 @@
-﻿using ArdalisRating.Domain.Enums;
-using ArdalisRating.Utils;
+﻿using ArdalisRating.Appplication.Utils;
+using ArdalisRating.Domain.Enums;
+using ArdalisRating.Domain.Models;
 using System;
 using Xunit;
 

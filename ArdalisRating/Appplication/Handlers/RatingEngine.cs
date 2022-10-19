@@ -1,8 +1,8 @@
-﻿using ArdalisRating.Domain.Enums;
-using ArdalisRating.Services.Local;
-using ArdalisRating.Utils;
+﻿using ArdalisRating.Appplication.Services.Local;
+using ArdalisRating.Appplication.Utils;
+using ArdalisRating.Domain.Models;
 
-namespace ArdalisRating.Services.Handlers
+namespace ArdalisRating.Appplication.Services.Handlers
 {
     /// <summary>
     /// The RatingEngine reads the policy application details from a file and produces a numeric

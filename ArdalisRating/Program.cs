@@ -1,10 +1,11 @@
-﻿using ArdalisRating.Services.Handlers;
-using ArdalisRating.Utils;
+﻿using ArdalisRating.Appplication.Services.Handlers;
+using ArdalisRating.Appplication.Services.Local;
+using ArdalisRating.Appplication.Utils;
 using System;
 
 Console.WriteLine("Ardalis Insurance Rating System Starting...");
 
-ILoggerService logger = new LoggerService();
+ILoggerService logger = new FileLoggerService();
 RatingEngine engine = new(logger, new FilePolicySource());
 
 engine.Rate();

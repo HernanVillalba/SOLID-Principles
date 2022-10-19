@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ArdalisRating.Utils
+namespace ArdalisRating.Appplication.Utils
 {
     public interface IFilePolicySource
     {
